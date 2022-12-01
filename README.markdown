@@ -63,12 +63,8 @@ http {
     capture_response_body_if                $cond_login 1;
     capture_response_body_if_latency_more   1s;
 
-    map $response_body $err {
-      ~\"error\":\"(?<e>.+)\" $e;
-      default "";
-    }  
 
-   include             /etc/nginx/mime.types;
+    include             /etc/nginx/mime.types;
     default_type        application/octet-stream;
     server_tokens off;
     proxy_hide_header X-Powered-By;
